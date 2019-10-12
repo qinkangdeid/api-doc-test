@@ -2,6 +2,7 @@ package com.power.doc.service;
 
 import com.power.common.util.DateTimeUtil;
 import com.power.doc.builder.ApiDocBuilder;
+import com.power.doc.builder.HtmlApiDocBuilder;
 import com.power.doc.constants.DocGlobalConstants;
 import com.power.doc.enums.ErrorCodeEnum;
 import com.power.doc.model.*;
@@ -34,15 +35,15 @@ public class ApiDocTest {
 
         //指定文档输出路径
         //@since 1.7 版本开始，选择生成静态html doc文档可使用该路径：DocGlobalConstants.HTML_DOC_OUT_PATH;
-        config.setOutPath("d:\\md");
+        config.setOutPath(DocGlobalConstants.HTML_DOC_OUT_PATH);
         // @since 1.2,如果不配置该选项，则默认匹配全部的controller,
         // 如果需要配置有多个controller可以使用逗号隔开
-        config.setPackageFilters("com.power.doc.controller");
+        config.setPackageFilters("com.power.doc.controller.inner");
         //不指定SourcePaths默认加载代码为项目src/main/java下的,如果项目的某一些实体来自外部代码可以一起加载
         config.setSourceCodePaths(
                 //自1.7.0版本开始，在此处可以不设置本地代码路径，单独添加外部代码路径即可
 //            SourceCodePath.path().setDesc("本项目代码").setPath("src/main/java"),
-            SourceCodePath.path().setDesc("加载项目外代码").setPath("E:\\ApplicationPower\\ApplicationPower\\Common-util\\src\\main\\java")
+//            SourceCodePath.path().setDesc("加载项目外代码").setPath("E:\\ApplicationPower\\ApplicationPower\\Common-util\\src\\main\\java")
         );
 
         //设置请求头，如果没有请求头，可以不用设置
@@ -80,7 +81,7 @@ public class ApiDocTest {
         ApiDocBuilder.builderControllersApi(config);
 
         //@since 1.7+版本开始，smart-doc支撑生成类似gitbook样式html文档，html文档可选择下面额方式
-        //HtmlApiDocBuilder.builderControllersApi(config);
+        HtmlApiDocBuilder.builderControllersApi(config);
         long end = System.currentTimeMillis();
         DateTimeUtil.printRunTime(end, start);
     }
