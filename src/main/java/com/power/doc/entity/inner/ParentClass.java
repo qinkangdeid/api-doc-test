@@ -13,12 +13,18 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class InnerClassParent {
+public class ParentClass {
 
     /**
-     * innerClassParentName
+     * 外部类地址名称
      */
-    private String innerClassParentName;
+    private String parentClassName;
+
+
+    /**
+     * 外部类地址
+     */
+    private String parentClassAddress;
 
     /**
      * innerClass
@@ -35,9 +41,13 @@ public class InnerClassParent {
          */
         private String innerName;
 
+        /**
+         * 内部类age
+         */
+        private Integer age;
+
 
     }
-
 
 
 }
